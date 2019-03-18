@@ -13,16 +13,12 @@ package org.usfirst.frc5577.GearsBot;
 import com.analog.adis16448.frc.ADIS16448_IMU;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.cameraserver.CameraServer;
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
-import org.usfirst.frc5577.GearsBot.commands.*;
 import org.usfirst.frc5577.GearsBot.subsystems.*;
 
 /**
@@ -100,17 +96,6 @@ public class Robot extends TimedRobot {
      * Autonomous options to the SmartDashboard.
      */
     public void autonomousInit() {
-        // autoChooser = new SendableChooser<CommandGroup>();
-        // autoChooser.setDefaultOption("Default program", new AutonDriveStraight());
-        // autoChooser.addOption("Left", new AutonDriveFromLeft());
-        // autoChooser.addOption("Center", new AutonDriveFromCenter());
-        // autoChooser.addOption("Right", new AutonDriveFromRight());
-        // SmartDashboard.putData("Autonomous mode chooser", autoChooser);
-
-        // autonomousCommand = (Command) autoChooser.getSelected();
-        // if (autonomousCommand != null) {
-        // autonomousCommand.start();
-        // }
     }
 
     /**
