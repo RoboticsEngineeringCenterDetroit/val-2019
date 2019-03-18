@@ -3,6 +3,10 @@ package org.usfirst.frc5577.GearsBot.buttons;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 
+/**
+ * Many thanks to Team 1675 for the idea behind DPadButton! Github gist this was
+ * based on: https://gist.github.com/pordonj/970b2c189cc6ee06388b3e2f12abcb72
+ */
 public class DPadButton extends Button {
 
     Joystick joystick;
