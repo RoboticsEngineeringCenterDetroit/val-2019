@@ -10,6 +10,9 @@
 
 package org.usfirst.frc5577.GearsBot;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.usfirst.frc5577.GearsBot.buttons.DPadButton;
 import org.usfirst.frc5577.GearsBot.buttons.DPadButton.Direction;
 import org.usfirst.frc5577.GearsBot.buttons.JoystickAnalogButton;
@@ -18,7 +21,6 @@ import org.usfirst.frc5577.GearsBot.commands.*;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -51,6 +53,19 @@ public class OI {
 	public Joystick driverController; // This is for xbox controller one or player one
 	public Joystick manipulatorController; // This is for xbox controller two or player two
 
+	private List<Button> buttons = new ArrayList<>();
+	public Button rBumperDriver;
+	public Button aButtonManipulator;
+	public Button bButtonManipulator;
+	public Button xButtonManipulator;
+	public Button yButtonManipulator;
+	public Button lBumperManipulator;
+	public Button lTriggerManipulator;
+	public Button rBumperManipulator;
+	public Button rTriggerManipulator;
+	public Button dPadUp;
+	public Button dPadDown;
+
 	public static OI instance;
 
 	public static OI GetInstance() {
@@ -77,45 +92,55 @@ public class OI {
 		// Driver Controller Setup
 		driverController = new Joystick(0);
 
-		Button rBumperDriver = new JoystickButton(driverController, R_BUMPER);
+		rBumperDriver = new JoystickButton(driverController, R_BUMPER);
+		buttons.add(rBumperDriver);
 		// Button dPadUp = new DPadButton(driverController, Direction.UP);
 		// Button dPadLeft = new DPadButton(driverController, Direction.LEFT);
 		// Button dPadRight = new DPadButton(driverController, Direction.RIGHT);
 
 		rBumperDriver.whenPressed(new ShiftGear());
-		// dPadUp.whenPressed(new TurnUntilLinedUp());
-		// dPadLeft.whenPressed(new Turn(-30));
-		// dPadRight.whenPressed(new Turn(30));
 
 		// Manipulator Controller Setup
 		manipulatorController = new Joystick(1);
 
-		Button aButton = new JoystickButton(manipulatorController, A_BUTTON);
-		Button bButton = new JoystickButton(manipulatorController, B_BUTTON);
-		Button xButton = new JoystickButton(manipulatorController, X_BUTTON);
-		Button yButton = new JoystickButton(manipulatorController, Y_BUTTON);
-		Button lBumperManipulator = new JoystickButton(manipulatorController, L_BUMPER);
-		Button lTriggerManipulator = new JoystickAnalogButton(manipulatorController, LEFT_TRIGGER_AXIS);
-		Button rBumperManipulator = new JoystickButton(manipulatorController, R_BUMPER);
-		Button rTriggerManipulator = new JoystickAnalogButton(manipulatorController, RIGHT_TRIGGER_AXIS);
-		Button dPadUp = new DPadButton(manipulatorController, Direction.UP);
-		Button dPadDown = new DPadButton(manipulatorController, Direction.DOWN);
+		aButtonManipulator = new JoystickButton(manipulatorController, A_BUTTON);
+		buttons.add(aButtonManipulator);
+		bButtonManipulator = new JoystickButton(manipulatorController, B_BUTTON);
+		buttons.add(bButtonManipulator);
+		xButtonManipulator = new JoystickButton(manipulatorController, X_BUTTON);
+		buttons.add(xButtonManipulator);
+		yButtonManipulator = new JoystickButton(manipulatorController, Y_BUTTON);
+		buttons.add(yButtonManipulator);
+		lBumperManipulator = new JoystickButton(manipulatorController, L_BUMPER);
+		buttons.add(lBumperManipulator);
+		lTriggerManipulator = new JoystickAnalogButton(manipulatorController, LEFT_TRIGGER_AXIS);
+		buttons.add(lTriggerManipulator);
+		rBumperManipulator = new JoystickButton(manipulatorController, R_BUMPER);
+		buttons.add(rBumperManipulator);
+		rTriggerManipulator = new JoystickAnalogButton(manipulatorController, RIGHT_TRIGGER_AXIS);
+		buttons.add(rTriggerManipulator);
+		dPadUp = new DPadButton(manipulatorController, Direction.UP);
+		buttons.add(dPadUp);
+		dPadDown = new DPadButton(manipulatorController, Direction.DOWN);
+		buttons.add(dPadDown);
 
-		dPadUp.whileHeld(new ElevatorUp(0.85));
-		dPadDown.whileHeld(new ElevatorDown(0.60));
+		// dPadUp.whileHeld(new ElevatorUp(0.85));
+		// dPadDown.whileHeld(new ElevatorDown(0.60));
 
 		lBumperManipulator.whenPressed(new ShiftWrist());
 		lTriggerManipulator.whenPressed(new ShiftHatchPanel());
 
-		rBumperManipulator.whileHeld(new LiftArm(0.8));
+		xButtonManipulator.whileHeld(new IntakeBall(1.0));
+		// rBumperManipulator.whenPressed(new IntakeBall(1.0));
 
-		// lBumperManipulator.whileHeld(new LowerArm(0.8));
+		bButtonManipulator.whileHeld(new ShootBall(1.0));
+		// rTriggerManipulator.whenPressed(new ShootBall(1.0));
+	}
 
-		rTriggerManipulator.whileHeld(new LowerArm(0.8));
-
-		xButton.whileHeld(new IntakeBall(0.8));
-
-		bButton.whileHeld(new ShootBall(0.8));
+	public void close() {
+		for (Button b : buttons) {
+			b.close();
+		}
 	}
 
 }
