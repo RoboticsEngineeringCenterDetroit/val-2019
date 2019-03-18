@@ -17,6 +17,10 @@ public class Intake extends Subsystem {
 		RobotMap.intakeTalonSRX.set(speed);
 	}
 
+	public void stop() {
+		RobotMap.intakeTalonSRX.set(0);
+	}
+
 	@Override
 	protected void initDefaultCommand() {
 	}

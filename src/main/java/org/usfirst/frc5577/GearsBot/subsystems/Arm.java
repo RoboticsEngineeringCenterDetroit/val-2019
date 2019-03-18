@@ -16,8 +16,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Arm extends TalonPIDSubsystem {
 
-    // Adjust Kp between 0.0001 and 0.0005, based on the arm. Greater than 0.0005
-    // seems to do wacky things.
+    /**
+     * Adjust Kp between 0.0001 and 0.0005, based on the arm. Greater than 0.0005
+     * seems to do wacky things/become unstable.
+     */
     public static final double Kp_default = 0.00022;
     public static final double Ki_default = 0.0;
     public static final double Kd_default = 0.0;
@@ -29,7 +31,7 @@ public class Arm extends TalonPIDSubsystem {
     private double Kd;
     private double Kf;
 
-    // Zero is with the arm straight horizontal
+    // 0° is with the arm straight horizontal
     public static final double MINIMUM_ANGLE = -30.0;
     public static final double MAXIMUM_ANGLE = 90.0;
     public static final double ANGLE_TOLERANCE = 2.0;

@@ -81,22 +81,11 @@ public class OI {
 
 	public OI() {
 
-		/*
-		 * You can uncomment (Ctrl + /) lines of code below to enable buttons on either
-		 * the driver controller or the manipulator controller.
-		 * 
-		 * These are pretty easy to configure, so if you have an idea for improved
-		 * controls, let's try it! :)
-		 */
-
 		// Driver Controller Setup
 		driverController = new Joystick(0);
 
 		rBumperDriver = new JoystickButton(driverController, R_BUMPER);
 		buttons.add(rBumperDriver);
-		// Button dPadUp = new DPadButton(driverController, Direction.UP);
-		// Button dPadLeft = new DPadButton(driverController, Direction.LEFT);
-		// Button dPadRight = new DPadButton(driverController, Direction.RIGHT);
 
 		rBumperDriver.whenPressed(new ShiftGear());
 
@@ -124,17 +113,11 @@ public class OI {
 		dPadDown = new DPadButton(manipulatorController, Direction.DOWN);
 		buttons.add(dPadDown);
 
-		// dPadUp.whileHeld(new ElevatorUp(0.85));
-		// dPadDown.whileHeld(new ElevatorDown(0.60));
-
 		lBumperManipulator.whenPressed(new ShiftWrist());
 		lTriggerManipulator.whenPressed(new ShiftHatchPanel());
 
 		xButtonManipulator.whileHeld(new IntakeBall(1.0));
-		// rBumperManipulator.whenPressed(new IntakeBall(1.0));
-
 		bButtonManipulator.whileHeld(new ShootBall(1.0));
-		// rTriggerManipulator.whenPressed(new ShootBall(1.0));
 	}
 
 	public void close() {

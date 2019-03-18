@@ -14,25 +14,22 @@ public class ShiftWrist extends Command {
 
 	}
 
+	@Override
 	protected void initialize() {
 		setTimeout(time);
 		initialClawState = Robot.pneumatics.isWristUp();
 	}
 
 	@Override
-	protected boolean isFinished() {
-		return isTimedOut();
-	}
-
-	// Called once after isFinished returns true
-	protected void end() {
-		// Robot.pneumatics.stop();
-	}
-
 	protected void execute() {
 		if (initialClawState == Robot.pneumatics.isWristUp()) {
 			Robot.pneumatics.shiftWrist();
 		}
+	}
+
+	@Override
+	protected boolean isFinished() {
+		return isTimedOut();
 	}
 
 }

@@ -33,6 +33,6 @@ public class IntakeBall extends Command {
 
     @Override
     protected void interrupted() {
-        Robot.intake.intakeBall(0);
+        Robot.intake.stop();
     }
 }

@@ -34,7 +34,7 @@ public class ShootBall extends Command {
 
 	@Override
 	protected void interrupted() {
-		Robot.intake.shootOutBall(0);
+		Robot.intake.stop();
 	}
 
 }
