@@ -7,7 +7,6 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ShootBall extends Command {
 
 	private double speed = 0.7;
-	private double time = 0;
 
 	public ShootBall() {
 		this(0.8);
@@ -16,11 +15,6 @@ public class ShootBall extends Command {
 	public ShootBall(double speed) {
 		requires(Robot.intake);
 		this.speed = speed;
-	}
-
-	public ShootBall(double speed, double time) {
-		this(speed);
-		this.time = time;
 	}
 
 	@Override
@@ -35,7 +29,7 @@ public class ShootBall extends Command {
 
 	@Override
 	protected boolean isFinished() {
-		return isTimedOut();
+		return false;
 	}
 
 	@Override

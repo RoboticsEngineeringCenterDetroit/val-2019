@@ -2,7 +2,6 @@ package org.usfirst.frc5577.GearsBot.subsystems;
 
 import org.usfirst.frc5577.GearsBot.RobotMap;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -14,7 +13,6 @@ public class Pneumatics extends Subsystem {
 
 	@Override
 	protected void initDefaultCommand() {
-		// TODO Auto-generated method stub
 	}
 
 	public void shiftGear() {

@@ -65,7 +65,7 @@ public class Arm extends TalonPIDSubsystem {
         talon.setInverted(true);
 
         controller = new VerticalArmPIDController(Kp_default, Ki_default, Kd_default, Kf_default, talon, talon);
-        controller.setAbsoluteTolerance(ANGLE_TOLERANCE); // TODO set tolerance in counts
+        controller.setAbsoluteTolerance(ANGLE_TOLERANCE);
 
         pid_tab_arm = Shuffleboard.getTab("Arm PID");
         nt_Kp_arm = pid_tab_arm.add("kP", Kp_default).getEntry();

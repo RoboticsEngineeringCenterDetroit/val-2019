@@ -1,7 +1,6 @@
 package org.usfirst.frc5577.GearsBot.commands;
 
 import org.usfirst.frc5577.GearsBot.Robot;
-import org.usfirst.frc5577.GearsBot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
